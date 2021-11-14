@@ -1,3 +1,7 @@
+html, body{
+    height: 100%;
+}
+
 body{
     background-color: #eae4e9;
     font-family: 'Poppins', sans-serif;
@@ -22,6 +26,7 @@ button{
     height: 3rem;
     margin: 0.5rem;
     color: #eae4e9;
+    cursor: pointer;
 }
 
 #newWord{
@@ -32,4 +37,8 @@ button{
 
 #letterChoosen{
     font-size: 1.5rem;
+}
+
+.draw{
+    height: 30%;
 }
