@@ -1,4 +1,4 @@
-let animals = ['vache', 'chien', 'poisson', 'lion', 'koala'];
+let animals = ['vache', 'chien', 'poisson', 'lion', 'koala', 'hippopotame', 'zebre', 'poule', 'dauphin', 'tortue', 'singe', 'cerf'];
 let wordString = '';
 let wordToFind = '';
 let lifes = 8;
@@ -9,6 +9,8 @@ let graph = myCanvas.getContext('2d');
 
 //Dessiner une partie du pendu à chaque erreur
 function drawHanged(lifes) {
+    graph.strokeStyle = '#A44A3F';
+    graph.lineWidth = 2.5;
     graph.beginPath();
     switch (lifes) {
         case 7:
@@ -22,6 +24,8 @@ function drawHanged(lifes) {
         case 5:
             graph.moveTo(75, 25);
             graph.lineTo(150, 25);
+            graph.moveTo(92, 25);
+            graph.lineTo(75, 45);
             break;
         case 4:
             graph.moveTo(150, 25);
@@ -43,21 +47,26 @@ function drawHanged(lifes) {
             graph.moveTo(162, 100);
             graph.lineTo(150, 87);
             graph.lineTo(137, 100);
+            graph.moveTo(148, 43);
+            graph.lineTo(145, 52);
+            graph.moveTo(145, 43);
+            graph.lineTo(148, 52);
+            graph.moveTo(155, 43);
+            graph.lineTo(152, 52);
+            graph.moveTo(152, 43);
+            graph.lineTo(155, 52);
             break;
     }
     graph.stroke();
 }
-
-
-
 
 //Afficher un mot au hasard du tableau animals
 function pickWord(list) {
     return list[Math.floor(Math.random() * list.length)];
 }
 
+//Créer un tableau des index correspondant à la lettre choisie
 function searchIndex(word, letter) {
-    console.log(word);
     let arrayIndex = [];
     let arrayLetterWord = word.split('');
 
@@ -74,7 +83,7 @@ function searchIndex(word, letter) {
     // }
 }
 
-//Afficher des underscores à la place du mot selon son nombre de caractères et réinitialiser clavier
+//Réinitialiser clavier
 function resetKeyboard() {
     document.addEventListener('click', chooseLetter);
     let elts = document.getElementsByTagName('button')
@@ -85,14 +94,17 @@ function resetKeyboard() {
     }
 }
 
+//Afficher des underscores à la place du mot selon son nombre de caractères
 function newPlay(word) {
     let wordChoosen = word.split('');
     wordString = '';
     lifes = 8;
     document.getElementById('lifeLeft').textContent = lifes;
+
     for (i = 0; i < wordChoosen.length; i++) {
         wordString += '_';
     }
+
     document.getElementById('answer').innerHTML = wordString;
     wordToFind = word.toUpperCase();
     resetKeyboard();
@@ -122,11 +134,10 @@ function chooseLetter(element) {
             drawHanged(lifes)
             if (lifes <= 0) {
                 lifes = 0;
-                document.getElementById('endPlay').textContent = 'PERDU !'
+                document.getElementById('endPlay').textContent = 'PERDU...';
             }
             document.getElementById('lifeLeft').textContent = lifes;
         }
-
 
         console.log(answerWord);
         element.target.style.backgroundColor = '#D1C8E1';
@@ -134,7 +145,6 @@ function chooseLetter(element) {
     }
 
 }
-
 
 
 //Remplacer underscore par lettre cliquée
@@ -146,3 +156,22 @@ function replaceLetters(letter, arrayPosition) {
     wordString = arrayWordString.join('');
     return wordString;
 }
+
+
+
+
+
+//Générer le clavier
+// const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+
+// for (i=0; i<alphabet.length; i++){
+//     let myLetter = alphabet[i].toUpperCase();
+//     let keyboardLetter = `<button id='myKey${myLetter}'>${myLetter}</button>`;
+//     document.getElementById('myKeyboard').innerHTML += keyboardLetter;
+// }
+// ou
+// alphabet.forEach(element => {
+//     let myLetter = element.toUpperCase();
+//     let keyboardLetter = `<button id='myKey${myLetter}'>${myLetter}</button>`;
+//     document.getElementById('myKeyboard').innerHTML += keyboardLetter;
+// });

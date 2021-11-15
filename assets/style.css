@@ -7,6 +7,10 @@ body{
     font-family: 'Poppins', sans-serif;
 }
 
+h1{
+    text-align: center;
+}
+
 .screen{
     display: flex;
     align-items: baseline;
@@ -40,5 +44,22 @@ button{
 }
 
 .draw{
-    height: 30%;
+    height: 25%;
+}
+
+#endPlay{
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.score{
+    font-size: 1.2rem;
+}
+
+.keyboard{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 1rem;
 }
